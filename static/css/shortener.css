@@ -17,24 +17,29 @@ html {
 
 body {
     font-family: 'Arvo';
-    background: #4f3b5b;
-    background: -moz-radial-gradient(center, ellipse cover, #4f3b5b 0%, #231733 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #4f3b5b), color-stop(100%, #231733));
-    background: -webkit-radial-gradient(center, ellipse cover, #4f3b5b 0%, #231733 100%);
-    background: -o-radial-gradient(center, ellipse cover, #4f3b5b 0%, #231733 100%);
-    background: -ms-radial-gradient(center, ellipse cover, #4f3b5b 0%, #231733 100%);
-    background: radial-gradient(ellipse at center, #4f3b5b 0%, #231733 100%);
+    background: #FFF;
+    background: -moz-radial-gradient(center, ellipse cover, #FFF 0%, #DDD 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #FFF), color-stop(100%, #DDD));
+    background: -webkit-radial-gradient(center, ellipse cover, #FFF 0%, #DDD 100%);
+    background: -o-radial-gradient(center, ellipse cover, #FFF 0%, #DDD 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #FFF 0%, #DDD 100%);
+    background: radial-gradient(ellipse at center, #FFF 0%, #DDD 100%);
 }
 
 .wrap {
-    width: 300px;
+    width: 100%;
 }
 
 .center {
+    background: red;
+    position: absolute;
+    color: #fff;
     top: 50%;
-    transform: translateY(-50%);
-    position: relative;
-    margin: auto;
+    left: 50%;
+    padding: 15px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 input {
@@ -68,7 +73,7 @@ label {
     position: static;
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: #444;
     font-family: 'Arvo';
     font-size: 16px;
 }
