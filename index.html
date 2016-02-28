@@ -4,51 +4,50 @@
 <head>
     <title>Shortener | Made by SubjectRefresh</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/skeleton.css" />
-</head>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
-<body>
-    <div class="center">
-        <div class="wrap-label">
-            <label><span id="count">0</span> new shortlinks</label>
+    <body>
+        <div class="valign-wrapper">
+            <div class="container valign">
+                <div class="row">
+                    <div class="col s12 m8 l6 offset-m2 offset-l3">
+                        <form>
+                            <input type="text" id="url" onClick="this.select();" placeholder="Long URL">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="wrap-label">
-            <label for="url">Long URL</label>
-            <p class="iconicfill-pen-alt2"></p>
-        </div>
-        <form>
-            <input type="text" id="url" onClick="this.select();" placeholder="Long URL">
-        </form>
-    </div>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-    $(function() {
-        var count = 0;
-        var socket = io();
-        var url;
-        $('form').on("submit", function() {
-            url = $("#url").val();
-            // do URL validation on url
-            socket.emit("url", url, function(packet) {
-                if (packet.status) {
-                    $("#count").html(count);
-                    $("#url").fadeOut("fast", function() {
-                        $("#url").val(packet.shortlink);
-                        $("#url").fadeIn("fast");
-                    });
-                } else {
-                    console.log(packet.message);
-                }
-            });
-            return false;
+        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</head>
+<script>
+$(function() {
+    var count = 0;
+    var socket = io();
+    var url;
+    $('form').on("submit", function() {
+        url = $("#url").val();
+        // do URL validation on url
+        socket.emit("url", url, function(packet) {
+            if (packet.status) {
+                $("#url").fadeOut("fast", function() {
+                    $("#url").val(packet.shortlink);
+                    $("#url").fadeIn("fast");
+                });
+            } else {
+                console.log(packet.message);
+            }
         });
-        socket.on('increment count', function() {
-            count++;
-            $("#count").html(count);
-        });
-    })
-    </script>
+        return false;
+    });
+
+})
+</script>
 </body>
 
 </html>
